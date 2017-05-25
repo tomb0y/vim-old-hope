@@ -90,10 +90,10 @@ endif
 " Variables {{{
 let s:gFg = s:gVeryLightGrey
 let s:tFg = s:tVeryLightGrey
-let s:gBg = s:gBlack
-let s:tBg = s:tBlack
-" let s:gBg = s:gVeryDarkGrey
-" let s:tBg = s:tVeryDarkGrey
+" let s:gBg = s:gBlack
+" let s:tBg = s:tBlack
+let s:gBg = s:gVeryDarkGrey
+let s:tBg = s:tVeryDarkGrey
 
 let s:vBold          = {'GUI': "BOLD"          , 'TERM': "NONE"          }
 let s:vItalic        = {'GUI': "ITALIC"        , 'TERM': "NONE"          }
