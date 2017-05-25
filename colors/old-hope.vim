@@ -30,8 +30,9 @@ let s:gLightGrey       = "#848794"
 let s:gGrey            = "#686B78"
 let s:gDarkGrey        = "#45474F"
 let s:gVeryDarkGrey    = "#1C1D21"
-let s:gRed             = "#EB3D54"
+let s:gPink            = "#F92672"
 let s:gOrange          = "#EF7C2A"
+let s:gPurple          = "#AE81FF"
 let s:gYellow          = "#E5CD52"
 let s:gGreen           = "#78BD65"
 let s:gBlue            = "#4FB4D8"
@@ -45,8 +46,9 @@ if s:tCol == 256
   let s:tGrey          = 242
   let s:tDarkGrey      = 238
   let s:tVeryDarkGrey  = 234
-  let s:tRed           = 203 " 9, 197
+  let s:tPink          = 161
   let s:tOrange        = 202 " 166
+  let s:tPurple        = 135
   let s:tYellow        = 221 " 222, 227
   let s:tGreen         = 41  " 47
   let s:tBlue          = 39  " 45
@@ -60,8 +62,9 @@ elseif s:tCol == 16
   let s:tGrey          = 12
   let s:tDarkGrey      = 8
   let s:tVeryDarkGrey  = 0
-  let s:tRed           = 1
+  let s:tPink          = 1
   let s:tOrange        = 9
+  let s:tPurple        = 5
   let s:tYellow        = 11
   let s:tGreen         = 2
   let s:tBlue          = 14
@@ -75,8 +78,9 @@ else
   let s:tGrey          = 6
   let s:tDarkGrey      = 0
   let s:tVeryDarkGrey  = 0
-  let s:tRed           = 1
+  let s:tPink          = 1
   let s:tOrange        = 5
+  let s:tPurple        = 5
   let s:tYellow        = 3
   let s:tGreen         = 2
   let s:tBlue          = 6
@@ -105,11 +109,12 @@ let s:vLightGrey     = {'GUI': s:gLightGrey    , 'TERM': s:tLightGrey    }
 let s:vGrey          = {'GUI': s:gGrey         , 'TERM': s:tGrey         }
 let s:vDarkGrey      = {'GUI': s:gDarkGrey     , 'TERM': s:tDarkGrey     }
 let s:vVeryDarkGrey  = {'GUI': s:gVeryDarkGrey , 'TERM': s:tVeryDarkGrey }
-let s:vRed           = {'GUI': s:gRed          , 'TERM': s:tRed          }
+let s:vPink          = {'GUI': s:gPink         , 'TERM': s:tPink         }
 let s:vOrange        = {'GUI': s:gOrange       , 'TERM': s:tOrange       }
+let s:vBlue          = {'GUI': s:gBlue         , 'TERM': s:tBlue         }
 let s:vYellow        = {'GUI': s:gYellow       , 'TERM': s:tYellow       }
 let s:vGreen         = {'GUI': s:gGreen        , 'TERM': s:tGreen        }
-let s:vBlue          = {'GUI': s:gBlue         , 'TERM': s:tBlue         }
+let s:vPurple        = {'GUI': s:gPurple       , 'TERM': s:tPurple       }
 " }}}
 
 " Highlight groups {{{
@@ -117,15 +122,15 @@ let s:vBlue          = {'GUI': s:gBlue         , 'TERM': s:tBlue         }
 call oldhope#SetHi ("Normal"        , s:vFg           , s:vBg           , s:vNone      )
 call oldhope#SetHi ("Underlined"    , s:vFg           , s:vBg           , s:vUnderline )
 call oldhope#SetHi ("Comment"       , s:vGrey         , s:vBg           , s:vNone      )
-call oldhope#SetHi ("Todo"          , s:vOrange       , s:vBg           , s:vNone      )
+call oldhope#SetHi ("Todo"          , s:vBlue         , s:vBg           , s:vNone      )
 call oldhope#SetHi ("Ignore"        , s:vGrey         , s:vBg           , s:vNone      )
 " * Variable types
-call oldhope#SetHi ("Constant"      , s:vOrange       , s:vBg           , s:vNone      )
+call oldhope#SetHi ("Constant"      , s:vBlue         , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Number"        , "Constant")
 call oldhope#LinkHi("Float"         , "Number")
 call oldhope#LinkHi("Boolean"       , "Constant")
 
-call oldhope#SetHi ("String"        , s:vBlue         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("String"        , s:vPurple       , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Character"     , "String")
 " * Keywords
 call oldhope#SetHi ("Statement"     , s:vGreen        , s:vBg           , s:vNone      )
@@ -144,12 +149,12 @@ call oldhope#LinkHi("PreProc"       , "Define")
 call oldhope#SetHi ("Identifier"    , s:vYellow       , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Function"      , "Identifier")
 " * Types
-call oldhope#SetHi ("Type"          , s:vRed          , s:vBg           , s:vNone      )
+call oldhope#SetHi ("Type"          , s:vPink         , s:vBg           , s:vNone      )
 call oldhope#LinkHi("Typedef"       , "Type")
 call oldhope#LinkHi("Structure"     , "Type")
 call oldhope#LinkHi("StorageClass"  , "Type")
 " * Specials
-call oldhope#SetHi ("Special"       , s:vBlue         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("Special"       , s:vPurple       , s:vBg           , s:vNone      )
 call oldhope#LinkHi("SpecialChar"   , "Special")
 call oldhope#LinkHi("Tag"           , "Special")
 call oldhope#LinkHi("Delimiter"     , "Special")
@@ -164,22 +169,22 @@ call oldhope#LinkHi("lCursor"       , "Cursor")
 " * Diff
 call oldhope#SetHi ("DiffAdd"       , s:vVeryDarkGrey , s:vGreen        , s:vNone      )
 call oldhope#SetHi ("DiffChange"    , s:vVeryDarkGrey , s:vYellow       , s:vNone      )
-call oldhope#SetHi ("DiffDelete"    , s:vVeryDarkGrey , s:vRed          , s:vNone      )
+call oldhope#SetHi ("DiffDelete"    , s:vVeryDarkGrey , s:vPink         , s:vNone      )
 call oldhope#SetHi ("DiffText"      , s:vNone         , s:vGrey         , s:vNone      )
 " * Errors
-call oldhope#SetHi ("Error"         , s:vVeryDarkGrey , s:vRed          , s:vBold      )
-call oldhope#SetHi ("ErrorMsg"      , s:vVeryDarkGrey , s:vRed          , s:vNone      )
+call oldhope#SetHi ("Error"         , s:vVeryDarkGrey , s:vPink         , s:vBold      )
+call oldhope#SetHi ("ErrorMsg"      , s:vVeryDarkGrey , s:vPink         , s:vNone      )
 call oldhope#SetHi ("Exception"     , s:vYellow       , s:vBg           , s:vBold      )
 " * Folding
 call oldhope#SetHi ("Folded"        , s:vLightGrey    , s:vDarkGrey     , s:vNone      )
 call oldhope#LinkHi("FoldColumn"    , "Folded")
 " * Searching
 call oldhope#SetHi ("IncSearch"     , s:vVeryDarkGrey , s:vVeryLightGrey, s:vNone      )
-call oldhope#SetHi ("Search"        , s:vVeryDarkGrey , s:vOrange       , s:vNone      )
+call oldhope#SetHi ("Search"        , s:vVeryDarkGrey , s:vBlue         , s:vNone      )
 " * Other
 call oldhope#SetHi ("MatchParen"    , s:vVeryDarkGrey , s:vYellow       , s:vBold      )
-call oldhope#SetHi ("ModeMsg"       , s:vOrange       , s:vBg           , s:vNone      )
-call oldhope#SetHi ("Question"      , s:vOrange       , s:vBg           , s:vNone      )
+call oldhope#SetHi ("ModeMsg"       , s:vBlue         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("Question"      , s:vBlue         , s:vBg           , s:vNone      )
 " * Complete menu
 call oldhope#SetHi ("Pmenu"         , s:vWhite        , s:vDarkGrey     , s:vNone      )
 call oldhope#SetHi ("PmenuSel"      , s:vVeryDarkGrey , s:vGreen        , s:vBold      )
@@ -190,25 +195,25 @@ call oldhope#SetHi ("SignColumn"    , s:vFg           , s:vBg           , s:vNon
 " GUI
 call oldhope#SetHi ("StatusLine"    , s:vFg           , s:vBg           , s:vBold      )
 call oldhope#SetHi ("StatusLineNC"  , s:vGrey         , s:vBg           , s:vBold      )
-call oldhope#SetHi ("Title"         , s:vOrange       , s:vNone         , s:vNone      )
-call oldhope#SetHi ("VertSplit"     , s:vRed          , s:vBg           , s:vBold      )
+call oldhope#SetHi ("Title"         , s:vBlue         , s:vNone         , s:vNone      )
+call oldhope#SetHi ("VertSplit"     , s:vPink         , s:vBg           , s:vBold      )
 call oldhope#SetHi ("VisualNOS"     , s:vNone         , s:vDarkGrey     , s:vNone      )
 call oldhope#SetHi ("Visual"        , s:vNone         , s:vDarkGrey     , s:vNone      )
-call oldhope#SetHi ("WarningMsg"    , s:vOrange       , s:vBg           , s:vNone      )
-call oldhope#SetHi ("WildMenu"      , s:vBlue         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("WarningMsg"    , s:vBlue         , s:vBg           , s:vNone      )
+call oldhope#SetHi ("WildMenu"      , s:vPurple       , s:vBg           , s:vNone      )
 call oldhope#SetHi ("Directory"     , s:vGreen        , s:vBg           , s:vBold      )
 call oldhope#SetHi ("TabLineFill"   , s:vVeryDarkGrey , s:vBg           , s:vNone      )
 call oldhope#SetHi ("TabLineSel"    , s:vLightGrey    , s:vBg           , s:vNone      )
 call oldhope#SetHi ("TabLine"       , s:vGrey         , s:vBg           , s:vNone      )
-call oldhope#SetHi ("CursorLineNr"  , s:vBlack        , s:vRed          , s:vBold      )
+call oldhope#SetHi ("CursorLineNr"  , s:vBlack        , s:vPink         , s:vBold      )
 call oldhope#SetHi ("CursorLine"    , s:vNone         , s:vVeryDarkGrey , s:vNone      )
 call oldhope#SetHi ("CursorColumn"  , s:vNone         , s:vVeryDarkGrey , s:vNone      )
 call oldhope#SetHi ("ColorColumn"   , s:vNone         , s:vVeryDarkGrey , s:vNone      )
 call oldhope#SetHi ("LineNr"        , s:vGrey         , s:vBg           , s:vNone      )
-call oldhope#SetHi ("NonText"       , s:vRed          , s:vBg           , s:vNone      )
+call oldhope#SetHi ("NonText"       , s:vPink         , s:vBg           , s:vNone      )
 " User colors for status line
-call oldhope#SetHi ("User1"         , s:vBlack        , s:vRed          , s:vBold      )
-call oldhope#SetHi ("User2"         , s:vRed          , s:vBg           , s:vBold      )
+call oldhope#SetHi ("User1"         , s:vBlack        , s:vPink         , s:vBold      )
+call oldhope#SetHi ("User2"         , s:vPink         , s:vBg           , s:vBold      )
 call oldhope#SetHi ("User3"         , s:vFg           , s:vBg           , s:vBold      )
 
 " Force dark background
